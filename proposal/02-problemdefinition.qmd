@@ -1,24 +1,9 @@
----
-bibliography: references.bib
----
-
 # The Problem
 
-```{=html}
-<!--
-Outlining the issue / weak point / problem to be solved by this
-proposal. This should be a compelling section that sets the reader up
-for the next section - the proposed solution!
+## Technical debt
 
-It is important to cover:
+The Bioconductor build system reports 1 FAIL and 7 NOTEs. Nine issues are open, including a data-loss bug in `loadBedGraphTrackFromURL` (#35) where configuration variables — including the URL itself — get overwritten when extra parameters are passed, and five missing igv.js features (CRAM loading, `sortByTag`, sashimi plots, GWAS improvements) explicitly requested by users. I know exactly what needs fixing — I just haven't had the focused time to do it properly.
 
- - [ ] What the problem is
- - [ ] Who it affects
- - [ ] Why is it a problem
- - [ ] What will solving the problem enable (why should it be solved)
- - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
- - [ ] If proposing changes to R itself: letter of support from R Core member
--->
-```
+## Accessibility gap
 
-An example in-text citation [@wickham2016].
+igvShiny's API is entirely programmatic — to navigate or load a track, you write R code. This is fine for bioinformaticians, but I've seen igvShiny deployed in clinical settings where the developers build the app, but the biologists driving the analysis can't interact with the browser directly. They're passive consumers of whatever the developer hardcoded. No Bioconductor package today offers a natural language interface to a genome browser. I've been wanting to build this for a while — `elmer` finally makes it practical without reinventing the wheel, and the refactoring in M1–M4 gives it a clean API to sit on top of.

@@ -1,6 +1,7 @@
 # Executive Summary
 
-<!--
-This section provides a condensed view of the entire proposal, one page long.
-It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
--->
+`igvShiny` embeds the Integrative Genomics Viewer as an htmlwidget in R Shiny, and is one of only two Bioconductor packages bridging IGV to the R ecosystem. With 228 monthly downloads and 27 forks, it has a real user base — but the package currently has **1 FAIL and 7 NOTEs** on Bioconductor, nine open issues (some since 2022), and no automated tests. The original author retired; I took over maintenance and have been shipping fixes, but a real cleanup pass needs focused time I haven't had.
+
+This proposal requests **$10,000** to do that cleanup properly, and to add something no Bioconductor package currently has: a natural language interface to a genome browser.
+
+Five milestones over 9 months: fix the bugs, complete the API, build a real test suite, improve documentation, and ship `igvChatUI()` / `igvChatServer()` — an optional module that lets users navigate the browser and manage tracks by typing prompts, powered by `elmer` (Claude, OpenAI, or a local Ollama model). The local LLM option matters for hospitals where sending patient genomic data to an external API is simply not allowed.

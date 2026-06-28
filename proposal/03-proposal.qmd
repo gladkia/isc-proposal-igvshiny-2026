@@ -1,50 +1,18 @@
-# The proposal
-<!--
-How are you going to solve the problem? Include the concrete actions you
-will take and an estimated timeline. What are likely failure modes and
-how will you recover from them?
+# The Proposal
 
-This is where the proposal should be outlined.
--->
+## Milestones
 
-## Overview
-<!--
-At a high-level address what your proposal is and how it will address
-the problem identified. Highlight any benefits to the R Community that
-follow from solving the problem. This should be your most compelling
-section.
+**M1 — Bug fixes and Bioconductor compliance (months 1–2)**
+Fix the `loadBedGraphTrackFromURL` config-overwrite bug (#35), `autoscaleGroup` passthrough (#105), and all remaining NOTEs. *Deliverable: 0 ERRORs, 0 WARNINGs on Bioconductor devel.*
 
-Include concrete actions you will take and estimated timeline.
--->
+**M2 — API completeness (months 2–4)**
+Implement the five features users have been asking for: CRAM local loading, `sortByTag` for BAM, sashimi plots for RNA-seq, `chromosomeColorMap` for GWAS, and flexible GWAS schema. *Deliverable: all seven open issues closed, new functions covered by tests.*
 
-## Detail
-<!--
-Go into more detail about the specifics of the project and how it delivers
-against the problem.
+**M3 — Testing and CI (months 3–5)**
+Replace the current untestable interactive tests with `shinytest2` headless tests, add regression coverage for M1–M2 fixes, and set up GitHub Actions CI on Linux, macOS, and Windows. *Deliverable: coverage $\geq$ 75% via `covr`; CI green on all three platforms.*
 
-Depending on project type the detail section should include:
--->
+**M4 — Documentation (months 4–6)**
+Write a "Getting Started" vignette (install → working app in 10 minutes) and a "Track Options Reference" vignette, replace the large demo apps with focused minimal examples (one per track type, under 60 lines each). *Deliverable: two new vignettes, updated pkgdown site.*
 
-### Minimum Viable Product
-
-<!--
-What is the smallest thing you can build that delivers value to your users?
--->
-
-### Architecture
-
-<!--
-What does the high-level architecture look like?
--->
-
-### Assumptions
-
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
-
-### External dependencies
-
-<!--
-What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
--->
+**M5 — LLM navigation module (months 6–9)**
+Add `igvChatUI()` / `igvChatServer()` — an optional Shiny module that accepts conversational prompts and maps them to igvShiny API calls: navigate to a gene, load or remove tracks, sort reads by tag, group BedGraphs in autoscale mode. The module uses [`elmer`](https://elmer.tidyverse.org) (Claude, OpenAI, or local Ollama). Every prompt is sent with the current browser state — active locus, loaded tracks, genome assembly — so commands like *"add a track for the other sample"* or *"zoom out to show the flanking genes"* work contextually. The Ollama path matters for hospitals where sending patient genomic data to an external API is simply not allowed. `elmer` is a `Suggests` dependency; the rest of the package is unaffected if it is not installed. *Deliverable: `igvChatUI/Server` in igvShiny; three providers documented and CI-tested with mocks; "Natural Language Navigation" vignette; showcase demo app.*

@@ -1,10 +1,10 @@
 ---
-title: "Proposal Title"
+title: "Modernization, Refactoring, and AI-Assisted Navigation of igvShiny"
 author:
-  - name: Annie Easley
-    orcid: 5555-5555-5555-5555
+  - name: Arkadiusz Gladki
+    orcid: 0000-0002-7520-515X
     affiliations:
-      - "Lewis Research Center, National Aeronautics and Space Administration"
+      - "Independent / gladki.pl"
 
 date: today
 date-format: iso
@@ -17,9 +17,6 @@ format:
       - right=1.25in
 bibliography: references.bib
 ---
-
-_This template was last revised on 2026-03-24._
-
 
 {{< include proposal/00-exec-summary.qmd >}}
 

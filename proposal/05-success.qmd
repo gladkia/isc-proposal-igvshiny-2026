@@ -1,22 +1,19 @@
 # Success
-<!--
-Projects should have a definition of done that is measurable, and a
-thorough understanding going in of what the risks are to delivery
--->
-
-## Definition of done
-<!--
-What does success look like?
--->
 
 ## Measuring success
-<!--
-How will we know when success is achieved, what markers can we use
-along the way
--->
+
+| Metric | Baseline (April 2026) | Target (December 2026) |
+|---|---|---|
+| Bioconductor build | 1 FAIL, 7 NOTEs | 0 ERRORs, 0 WARNINGs, $\leq$2 NOTEs |
+| Open bugs | 9 | $\leq$3 (all new, post-grant) |
+| Test coverage | ~30% | $\geq$75% |
+| Functions with `@examples` | ~60% | 100% |
+| Vignettes | 1 | 4 |
+| New igv.js features exposed | 0 of 5 | 5 of 5 |
+| LLM providers supported | 0 | 3 (Claude, OpenAI, Ollama) |
+| Supported prompt action types | 0 | $\geq$10 |
+| CI platforms | 0 | 3 (Linux, macOS, Windows) |
 
 ## Future work
-<!--
-How could this be extended / developed in the future by yourself
-and/or the community in general?
--->
+
+I'm not trying to answer biological questions here (*"is this variant pathogenic?"*) — that's a separate project requiring ClinVar, Ensembl, and a lot more work. The scope is intentionally narrow: control the browser, nothing more. Voice input via Whisper/`rollama` and applying the same pattern to `igvR` are natural next steps.
